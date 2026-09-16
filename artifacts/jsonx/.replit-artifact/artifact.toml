@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "JSONX"
+description = "A privacy-first JSON database viewer and developer data toolkit that processes data locally in the browser."
+version = "1.0.0"
+id = "artifacts/jsonx"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20714
+
+[services.development]
+run = "pnpm --filter @workspace/jsonx run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/jsonx", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/jsonx/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20714"
+BASE_PATH = "/"

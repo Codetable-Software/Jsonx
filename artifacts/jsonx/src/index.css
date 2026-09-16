@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --background: 225 18% 8%;
+  --foreground: 216 20% 92%;
+  --border: 220 15% 17%;
+  --input: 220 15% 20%;
+  --ring: 169 87% 43%;
+  --card: 224 17% 11%;
+  --card-foreground: 216 20% 92%;
+  --card-border: 220 15% 18%;
+  --sidebar: 225 19% 7%;
+  --sidebar-foreground: 216 20% 88%;
+  --sidebar-border: 220 15% 15%;
+  --popover: 223 17% 13%;
+  --popover-foreground: 216 20% 92%;
+  --primary: 169 87% 43%;
+  --primary-foreground: 224 21% 8%;
+  --secondary: 222 14% 16%;
+  --secondary-foreground: 216 20% 86%;
+  --muted: 222 14% 13%;
+  --muted-foreground: 218 12% 56%;
+  --accent: 190 91% 53%;
+  --accent-foreground: 224 21% 8%;
+  --destructive: 1 78% 63%;
+  --destructive-foreground: 0 0% 98%;
+  --app-font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --app-font-mono: 'DM Mono', ui-monospace, SFMono-Regular, monospace;
+  --radius: 0.55rem;
+  --shadow-panel: 0 16px 50px rgba(0,0,0,.24);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--app-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+::selection { background: hsl(var(--primary) / .28); color: hsl(var(--foreground)); }
+
+.jsonx-shell {
+  background:
+    radial-gradient(circle at 75% -20%, hsl(190 70% 28% / .10), transparent 30rem),
+    radial-gradient(circle at -10% 100%, hsl(169 70% 25% / .07), transparent 34rem),
+    hsl(var(--background));
+}
+.jsonx-grid {
+  background-image: linear-gradient(hsl(220 15% 16% / .23) 1px, transparent 1px), linear-gradient(90deg, hsl(220 15% 16% / .23) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+.mono { font-family: var(--app-font-mono); }
+.panel {
+  border: 1px solid hsl(var(--card-border));
+  background: hsl(var(--card) / .92);
+  box-shadow: var(--shadow-panel);
+}
+.hairline { border-color: hsl(var(--border)); }
+.control {
+  border: 1px solid hsl(var(--input));
+  background: hsl(var(--muted) / .64);
+  color: hsl(var(--foreground));
+  transition: border-color .16s ease, background-color .16s ease, color .16s ease, transform .16s ease;
+}
+.control:hover { border-color: hsl(var(--primary) / .5); background: hsl(var(--muted)); }
+.control:focus { outline: none; border-color: hsl(var(--primary)); box-shadow: 0 0 0 3px hsl(var(--primary) / .12); }
+.icon-btn { display: inline-flex; align-items: center; justify-content: center; border-radius: .42rem; }
+.icon-btn:disabled { opacity: .35; cursor: not-allowed; }
+.icon-btn:not(:disabled):active { transform: translateY(1px); }
+.btn-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+.btn-primary:hover { background: hsl(169 87% 48%); }
+.btn-quiet { background: hsl(var(--secondary)); color: hsl(var(--secondary-foreground)); border: 1px solid hsl(var(--border)); }
+.btn-quiet:hover { border-color: hsl(var(--primary) / .5); background: hsl(222 14% 20%); }
+.tab-active { color: hsl(var(--primary)); border-bottom: 2px solid hsl(var(--primary)); }
+.scrollbar-thin { scrollbar-width: thin; scrollbar-color: hsl(var(--border)) transparent; }
+.scrollbar-thin::-webkit-scrollbar { width: 7px; height: 7px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 99px; }
+.dropzone { border: 1px dashed hsl(var(--primary) / .48); background: linear-gradient(135deg, hsl(var(--primary) / .055), hsl(var(--accent) / .025)); }
+.dropzone:hover, .dropzone.is-over { border-color: hsl(var(--primary)); background: hsl(var(--primary) / .10); }
+.key { color: hsl(190 91% 66%); }
+.string { color: hsl(153 62% 64%); }
+.number { color: hsl(36 90% 67%); }
+.boolean { color: hsl(278 75% 76%); }
+.null { color: hsl(var(--muted-foreground)); }
+.status-dot { width: 7px; height: 7px; border-radius: 999px; background: hsl(var(--primary)); box-shadow: 0 0 0 3px hsl(var(--primary) / .13); }
+.noise::after { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .025; z-index: 50; background-image: radial-gradient(hsl(180 20% 70% / .35) .6px, transparent .6px); background-size: 5px 5px; }
+@keyframes in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse-soft { 0%,100% { opacity: .56; } 50% { opacity: 1; } }
+.animate-in { animation: in .32s ease both; }
+.pulse-soft { animation: pulse-soft 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
